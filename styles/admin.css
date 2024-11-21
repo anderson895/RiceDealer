@@ -1,0 +1,744 @@
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: #4a3c31;
+    height: 100%;
+    background: url('../images/bg3.png') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+}
+
+/* body {
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+    min-height: 95vh;
+    overflow: hidden;
+} */
+
+body {
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+    min-height: 95vh;
+    overflow: auto; /* Allows scrolling */
+}
+
+header {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 6px;
+}
+
+header .logo {
+    height: 50px;
+    margin: -10px 0 -18px 15px;
+}
+
+header .nav-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+}
+
+header nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #000000;
+    font-weight: 800;
+    font-size: small;
+    transition: color 0.3s ease, text-decoration-color 0.3s ease;
+}
+
+header nav a.current {
+    color: #E1BE42;
+}
+
+header nav a:hover {
+    color: #E1BE42;
+}
+
+header .account-info {
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+}
+
+header .account-info .user-name {
+    margin-right: 10px;
+    font-weight: bold;
+    color: #4a3c31;
+    font-size: 17px;
+    text-align: right;
+}
+
+header .account-info img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.sidebar {
+    position: fixed;
+    top: 80px;
+    left: 20px;
+    width: 200px;
+    height: calc(100% - 115px);
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    padding-top: 20px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: width 0.3s ease; 
+}
+
+.sidebar.current {
+    width: 320px;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    justify-content: flex-start; 
+    flex-grow: 1; 
+} 
+
+.sidebar nav ul li {
+    margin: 15px 0;
+    width: 100%; 
+}
+
+.sidebar nav ul li img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    align-items: start;
+}
+
+.sidebar nav ul li a {
+    text-decoration: none;
+    color: #000000;
+    font-weight: 800;
+    font-size: medium;
+    display: flex;
+    align-items: center; 
+    gap: 10px; 
+    width: 100%; 
+    padding: 13px 20px; 
+    box-sizing: border-box; 
+    transition: color 0.3s ease, text-decoration-color 0.3s ease, background-color 0.3s ease;
+}
+
+.sidebar nav ul li a.current,
+.sidebar nav ul li a:hover {
+    color: #E1BE42;
+    background-color: #FDE9A2; 
+    -webkit-text-stroke: 1px #000;
+}
+
+.sidebar ul.reports {
+    margin-top: auto;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    justify-content: flex-start; 
+}
+
+.sidebar ul.reports {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    justify-content: flex-start; 
+} 
+
+.sidebar ul.reports li {
+    margin: 25px 0;
+    width: 100%; 
+}
+
+.sidebar ul.reports li img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    align-items: start;
+}
+
+.sidebar ul.reports li a {
+    text-decoration: none;
+    color: #000000;
+    font-weight: 800;
+    font-size: medium;
+    display: flex;
+    align-items: center; 
+    gap: 10px; 
+    width: 100%; 
+    padding: 13px 20px; 
+    box-sizing: border-box; 
+    transition: color 0.3s ease, text-decoration-color 0.3s ease, background-color 0.3s ease;
+}
+
+.sidebar ul.reports li a.current,
+.sidebar ul.reports li a:hover {
+    color: #E1BE42;
+    background-color: #FDE9A2; 
+    -webkit-text-stroke: 1px #000;
+}
+
+main {
+    flex: 1;
+    margin: 50px 0 auto 220px;
+    padding: 0;
+}
+
+
+img.notification-icon {
+    margin-right: 10px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f0f0f0;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+    border-radius: 10px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    border-radius: 10px;
+}
+
+.dropdown img {
+    cursor: pointer;
+}
+
+div#notificationDropdown {
+    width: 250px;
+}
+
+p.notif {
+    padding: 0 15px 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.upper {
+    font-family: 'Sulphur Point', sans-serif;
+    display: flex;
+    flex-direction: row;
+    height: 30vh;
+}
+
+.card1 {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 14px;
+    margin: 20px 5px 5px 20px;
+    text-align: left;
+    width: calc(100% - 300px);
+}
+
+.card1 h3, .card2 h3, .card3 h3,
+.card4 h3, .card6 h3 {
+    margin-top: -5px;
+    margin-bottom: -10px;
+    color: #4a3c31;
+    font-weight: 500;
+    font-family: system-ui;
+}
+
+.card2 {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 14px;
+    margin: 20px 10px 5px 5px;
+    text-align: left;
+    width: calc(100% - 100px);
+}
+
+.bottom {
+    font-family: 'Sulphur Point', sans-serif;
+    display: flex;
+    flex-direction: row;
+    height: 60vh;
+}
+
+.bottom1 {
+    height: 59vh;
+}
+
+.card3 {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 14px;
+    margin: 5px 5px 13px 20px;
+    text-align: left;
+    width: calc(100% - 300px);
+    height: calc(100% - 25px);
+    /* overflow: auto; */
+    /* scrollbar-width: thin; */
+    /* scrollbar-color: #888 #f1f1f1;  */
+}
+
+.card4 {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 14px;
+    margin: 5px 10px 5px 5px;
+    text-align: left;
+    width: calc(100% - 45px);
+    height: calc(95% - 240px);
+}
+
+.card5 {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin: 10px 10px 5px 5px;
+    text-align: left;
+    width: calc(100% - 38px);
+    height: calc(95% - 240px);
+}
+
+.card5 h4 {
+    margin-top: -5px;
+    margin-bottom: -10px;
+    display: grid;
+    font-size: larger;
+    justify-content: center;
+    font-weight: 900;
+}
+
+.card6 {
+    /* background-color: rgba(255, 255, 255, 0.8); */
+    border-radius: 15px;
+    border-style: solid;
+    border-color: #E1BE42;
+    border-width: thin;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    padding: 10px;
+    margin: 8px 8px 5px 5px;
+    text-align: left;
+    width: 36vw;
+    height: calc(100% - 40px);
+}
+
+/* CANVAS */
+
+
+canvas {
+    width: 100% !important;
+    height: 98% !important;
+}
+
+canvas#salesRevenueChart {
+    height: 105% !important;
+    margin: -25px 0px;
+}
+
+canvas#purchasePreferencesChart {
+    margin: 10px 0px;
+}
+
+.sorting-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -25px;
+    margin-bottom: -10px;
+}
+
+.sorting-container label {
+    margin-right: 10px; /* Space between label and dropdown */
+}
+
+.sorting-container select {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+
+@media (min-width: 650px) and (max-width: 829px) {
+
+    main {
+        margin: 65px 0 auto 100px;
+    }
+
+    header .logo {
+        height: 40px;
+        margin-left: 10px;
+    }
+
+    header nav a {
+        margin: 0 5px;
+        font-size: xx-small;
+        text-align: center;
+    }
+
+    header .account-info .user-name {
+        font-size: 12px;
+        margin-right: 5px;
+    }
+
+    header .account-info img {
+        margin-right: 10px;
+    }
+
+    header .account-info {
+        display: flex;
+        align-items: center;
+        margin-right: 15px;
+    }
+
+    .sidebar {
+        top: 75px;
+        left: 10px;
+        width: 100px;
+        /* height: 88%; */
+    }
+
+    .sidebar nav ul li a {
+        font-size: xx-small;
+        gap: 5px;
+        padding: 13px 5px;
+        justify-content: center;
+    }
+
+    .sidebar nav ul li img {
+        width: 20px;
+        height: 20px;
+        margin-right: 2px;
+    }
+
+    .sidebar ul.reports li a {
+        font-size: xx-small;
+        gap: 5px;
+        padding: 13px 5px;
+        justify-content: center;
+    }
+
+    .sidebar ul.reports li img {
+        width: 20px;
+        height: 20px;
+        margin-right: 2px;
+    }
+
+    .card1 h3, .card2 h3, .card3 h3, .card4 h3, .card6 h3 {
+        font-size: medium;
+    }
+}
+
+
+@media (min-width: 1441px) {
+
+    .card1 {
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 14px;
+        margin: 20px 5px 5px 20px;
+        text-align: left;
+        width: calc(100% - 900px);
+        height: calc(100% - 53px);
+    }
+
+    .card2 {
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 14px;
+        margin: 20px 10px 5px 5px;
+        text-align: left;
+        width: calc(100% - 900px);
+        height: calc(100% - 53px);
+    }
+
+    .card3 {
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 14px;
+        margin: 5px 5px 13px 20px;
+        text-align: left;
+        width: calc(100% - 900px);
+        height: calc(100% - 1px);
+        /* overflow: auto; */
+        /* scrollbar-width: thin; */
+        /* scrollbar-color: #888 #f1f1f1;  */
+    }
+
+    .card4 {
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 14px;
+        margin: 5px 10px 5px 5px;
+        text-align: left;
+        width: calc(100% - 42px);
+        height: calc(100% - 453px);
+    }
+
+    .card5 {
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 14px;
+        margin: 10px 10px 5px 5px;
+        text-align: left;
+        width: calc(100% - 42px);
+        height: calc(100% - 435px);
+    }
+
+    .card5 h4 {
+        margin-top: -5px;
+        margin-bottom: -10px;
+        display: grid;
+        font-size: larger;
+        justify-content: center;
+        font-weight: 900;
+    }
+
+    .card6 {
+        /* background-color: rgba(255, 255, 255, 0.8); */
+        border-radius: 15px;
+        border-style: solid;
+        border-color: #E1BE42;
+        border-width: thin;
+        /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+        padding: 10px;
+        margin: 8px 8px 5px 5px;
+        text-align: left;
+        width: 36vw;
+        height: 26vh;
+    }
+
+    canvas#salesRevenueChart {
+        height: 103% !important;
+    }
+}
+
+
+
+@media (max-width: 649px) {
+    header .logo {
+        height: 40px;
+        margin-left: 10px;
+    }
+
+    .contact-info {
+        flex-direction: column;
+        align-items: start;
+        margin-left: 30px;
+    }
+
+    .highlight {
+        padding: 100px 35px 5px;
+    }
+
+    .highlight-text p {
+        margin: 20px 0 25px;
+    }
+
+    .highlight-image img {
+        margin-top: -100px;
+    }
+
+    footer {
+        margin: 20px auto;
+        padding: 15px 15px;
+        text-align: center;
+    }
+
+    .divider {
+        width: 90%;
+        height: 1px;
+        margin: 10px 0;
+    }
+        
+    header nav a {
+        margin: 0 5px;
+        font-size: xx-small;
+        text-align: center;
+    }
+
+    header .account-info .user-name {
+        font-size: 12px;
+        margin-right: 5px;
+    }
+
+    header .account-info img {
+        margin-right: 10px;
+    }
+
+    header .account-info {
+        display: flex;
+        align-items: center;
+        margin-right: 15px;
+    }
+
+    .sidebar {
+        top: 75px;
+        left: 10px;
+        width: 100px;
+    }
+
+    .sidebar nav ul li a {
+        font-size: xx-small;
+        gap: 5px;
+        padding: 13px 5px;
+        justify-content: center;
+    }
+
+    .sidebar nav ul li img {
+        width: 20px;
+        height: 20px;
+        margin-right: 2px;
+    }
+
+    .sidebar ul.reports li a {
+        font-size: xx-small;
+        gap: 5px;
+        padding: 13px 5px;
+        justify-content: center;
+    }
+
+    .sidebar ul.reports li img {
+        width: 20px;
+        height: 20px;
+        margin-right: 2px;
+    }
+
+    main {
+        margin: 45px 0 20px 100px;
+        padding: 0;
+        overflow: auto;
+        scrollbar-width: thin;
+        scrollbar-color: #888 #f1f1f1; 
+    }
+
+    .card{
+        margin: 20px 20px auto 20px;
+
+    }
+
+    .card1 h3, .card2 h3, .card3 h3, .card4 h3, .card6 h3 {
+        font-size: 12px;
+        font-weight: 700;
+
+    }
+
+    .dashboard {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .upper{
+        flex-direction: column;
+        /* height: 51vh; */
+        height: 5%;
+    }
+
+    .bottom {
+        flex-direction: column;
+    }
+
+    .card1, .card2, .card3, .card4, .card5 {
+        width:  86%;
+        margin: 20px 10px -10px 20px;
+    }
+
+    .card4 {
+        height: 15pc;
+    }
+
+    .card5 {
+        height: (100% - 270px)
+    }
+
+    .card6 {
+        width: auto;
+        height: calc(100% - 40px);
+    }
+}
+
+@media (max-width: 320px) {
+    .card1, .card2, .card3, .card4, .card5 {
+        width:  72%;
+        margin: 20px 10px -10px 20px;
+    }
+
+    .card1, .card2 {
+        height: 40%;
+    }
+    
+    canvas {
+        margin-top: 10px;
+    }    
+
+    .upper, .bottom {
+        flex-direction: column;
+        height: 67vh;
+    }
+}

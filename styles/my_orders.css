@@ -1,0 +1,607 @@
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: #4a3c31;
+    height: 100%;
+    background: url('../images/bg3.png') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+}
+
+html,
+body,
+main,
+.product-grid {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    margin: 0;
+    padding: 10px;
+    overflow: hidden
+}
+
+header {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 6px;
+}
+
+header .logo {
+    height: 50px;
+    margin: -10px 0 -18px 15px;
+}
+
+header .nav-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+}
+
+header nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #000000;
+    font-weight: 800;
+    font-size: small;
+    transition: color 0.3s ease, text-decoration-color 0.3s ease;
+}
+
+header nav a.current {
+    color: #E1BE42;
+}
+
+header nav a:hover {
+    color: #E1BE42;
+}
+
+
+header .account-info {
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+}
+
+header .account-info .user-name {
+    margin-right: 10px;
+    font-weight: bold;
+    color: #4a3c31;
+    font-size: 17px;
+    text-align: right;
+}
+
+header .account-info img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+img.notification-icon {
+    margin-right: 10px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f0f0f0;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+    border-radius: 10px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    border-radius: 10px;
+}
+
+
+.dropdown img {
+    cursor: pointer;
+}
+
+
+main {
+    flex: 1;
+    max-width: 75%;
+    margin: 75px auto;
+    width: 100%;
+    display: flex;
+}
+
+h4 {
+    display: flex;
+    text-align: start;
+    color: #333;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 18px;
+    margin: 5px 0;
+    gap: 5px;
+}
+
+img.order-icon {
+    text-align: start;
+    margin-top: -5px;
+    height: 40px;
+    width: 40px;
+}
+
+.cart-summary {
+    background-color: #FFFAE8;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    border-radius: 15px;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center; */
+    max-height: 83%;
+    width:100%;
+    overflow-y: auto; 
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1; 
+}
+
+.cart {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    /* padding: 25px; */
+}
+
+.summary {
+    width: 100%;
+    flex: 3;
+}
+
+.summary table {
+    width: 100%;
+    margin: 0 auto; 
+    border-collapse: collapse; 
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: -10px;
+}
+
+.sorting-options {
+    margin-bottom: 20px;
+}
+
+.sorting-options label {
+    margin-right: 10px;
+}
+
+.sorting-options select {
+    padding: 5px;
+    font-size: 16px;
+}
+
+p.no-orders {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.orders-list {
+    display: grid;
+    gap: 20px;
+    padding: 10px 5px;
+}
+
+.order-card {
+    background: linear-gradient(135deg, #f9f9f9, #f1f1f1);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    cursor: pointer;
+    transition: box-shadow 0.2s ease;
+}
+
+.order-card:hover {
+    transform: scale(1.02);
+}
+
+.order-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.order-header {
+    background: #E1BE42;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.order-header .order-id {
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.order-header .order-date {
+    font-size: 14px;
+    font-style: italic;
+}
+
+/* Order card body */
+.order-body {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.order-detail {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+}
+
+.order-detail img.icon {
+    width: 24px;
+    height: 24px;
+}
+
+.order-detail strong,
+.order-products strong {
+    color: #E1BE42;
+}
+
+.product-details {
+    padding-left: 15px;
+    flex-grow: 1;
+}
+
+.prod-name {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.prod-brand {
+    color: #888;
+    font-size: 14px;
+}
+
+.prod-quantity {
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.product-price {
+    text-align: right;
+    padding-right: 55px;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.product-image img {
+    margin-left: 55px;
+    width: 80px;    
+    height: auto;
+}
+
+.more-items {
+    background-color: #f8f8f8;
+    color: #555;
+    padding: 5px 10px;
+    font-weight: bold;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 15px 35px;
+    font-size: 0.9em;
+}
+
+
+
+.total-price {
+    font-weight: 600;
+}
+
+.total {
+    font-size: 20px;
+    margin-top: 10px;
+    font-weight: bold; 
+    width: 95%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.order-status-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+.order-status {
+    padding: 8px;
+    border-radius: 30px;
+    font-size: 14px;
+    text-align: center;
+    width: fit-content;
+    background-color: #E1BE42; 
+    margin-top: 10px;
+}
+
+.details-link {
+    display: flex;
+    align-items: center;
+    color: #fdcb18; 
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.details-link .arrow {
+    margin-left: 5px;
+    font-size: 18px;
+}
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
+    z-index: 1000; /* Make sure it's on top of other elements */
+    display: flex; /* Use Flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+  
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border: 2px solid #E1BE42;
+    border-radius: 15px;
+    max-width: 250px;
+    min-width: 200px;
+    position: relative;
+    text-align: center;
+}
+  
+button {
+    padding: 10px 20px;
+    background-color: #E1BE42;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #d4a834;
+}
+
+.close {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    cursor: pointer;
+    color: red;
+}
+
+@media (min-width: 50px) and (max-width: 580px) {
+    header .logo {
+        height: 40px;
+        margin-left: 10px;
+    }
+
+    header nav a {
+        margin: 0 5px;
+        font-size: xx-small;
+        text-align: center;
+    }
+
+    header .account-info .user-name {
+        font-size: 12px;
+        margin-right: 5px;
+    }
+
+    header .account-info {
+        display: flex;
+        align-items: center;
+        margin-right: 15px;
+    }
+
+    .order-card {
+        padding: 10px;
+    }
+
+    .order-header .order-id {
+        font-size: 15px;
+    }
+
+    .order-header .order-date {
+        font-size: 12px;
+    }
+    
+    .order-body {
+        padding: 5px;
+    }
+
+    .order-detail {
+        font-size: 14px;
+    }
+
+    .orders-list {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        padding: 0;
+        gap: 15px;
+    }
+    
+    .cart-summary {
+        position: fixed;
+        padding: 10px 10px;
+        right: 10px;
+        width: 91%;
+        max-height: 85%;
+    }
+
+    .summary {
+        padding: 15px;
+    }
+
+    .container {
+        margin-top: auto;
+    }
+
+    .sorting-options {
+        margin-bottom: 0;
+        display: flex;
+        flex-direction: column;
+    }
+        
+    .sorting-options select {
+        padding: 3px;
+        font-size: 12px;
+    }    
+    .product-image img {
+        margin-left: 5px;
+    }
+    
+    .product-price {
+        padding: 0px 30px;
+        font-size: 15px;
+    }    
+}
+
+@media (min-width: 581px) and (max-width: 768px) {
+    header .logo {
+        font-size: 18px;
+        margin-left: 0;
+        margin-right: 7px;
+    }
+
+    header nav a {
+        margin: 0 5px;
+        font-size: xx-small;
+        text-align: center;
+    }
+
+    header .account-info .user-name {
+        font-size: 12px;
+        margin-right: 5px;
+    }
+
+    header .account-info {
+        display: flex;
+        align-items: center;
+        margin-right: 15px;
+    }
+
+    .order-card {
+        padding: 10px;
+    }
+
+    .order-header .order-id {
+        font-size: 15px;
+    }
+
+    .order-header .order-date {
+        font-size: 12px;
+    }
+    
+    .order-body {
+        padding: 5px;
+    }
+
+    .order-detail {
+        font-size: 14px;
+    }
+
+    .orders-list {
+        grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+        padding: 0;
+        gap: 15px;
+    }
+
+    .summary {
+        padding: 15px;
+    }
+    
+    .cart-summary {
+        position: fixed;
+        padding: 10px 10px;
+        right: 10px;
+        width: 94%;
+    }
+
+    .container {
+        margin-top: auto;
+    }
+
+    .sorting-options {
+        margin-bottom: 0;
+        display: flex;
+        flex-direction: column;
+    }
+        
+    .sorting-options select {
+        padding: 3px;
+        font-size: 12px;
+    }    
+    
+}

@@ -1,0 +1,790 @@
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: #4a3c31;
+    height: 100%;
+    background: url('../images/bg3.png') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+}
+
+html, body, main, .product-grid {
+    height: 100%; /* Ensure all ancestors have height set */
+}
+
+body {
+    display: flex;
+    flex-direction: row; 
+    height: 100vh;
+    margin: 0;
+    padding: 10px;
+    overflow: hidden
+}
+
+header {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 6px;
+}
+
+header .logo {
+    height: 50px;
+    margin: -10px 0 -18px 15px;
+}
+
+header .nav-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+}
+
+header nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #000000;
+    font-weight: 800;
+    font-size: small;
+    transition: color 0.3s ease, text-decoration-color 0.3s ease;
+}
+
+header nav a.current {
+    color: #E1BE42;
+}
+
+header nav a:hover {
+    color: #E1BE42;
+}
+
+
+header .account-info {
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+}
+
+header .account-info .user-name {
+    margin-right: 10px;
+    font-weight: bold;
+    color: #4a3c31;
+    font-size: 17px;
+    text-align: right;
+}
+
+header .account-info img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.sidebar {
+    position: fixed;
+    top: 80px;
+    left: 20px;
+    width: 200px;
+    height: calc(100% - 115px);
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    padding-top: 20px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: width 0.3s ease; 
+    flex-shrink: 0; 
+}
+
+.sidebar.current {
+    width: 320px;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    justify-content: flex-start; 
+    flex-grow: 1; 
+} 
+
+.sidebar nav ul li {
+    margin: 15px 0;
+    width: 100%; 
+}
+
+.sidebar nav ul li img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    align-items: start;
+}
+
+.sidebar nav ul li a {
+    text-decoration: none;
+    color: #000000;
+    font-weight: 800;
+    font-size: medium;
+    display: flex;
+    align-items: center; 
+    gap: 10px; 
+    width: 100%; 
+    padding: 13px 20px; 
+    box-sizing: border-box; 
+    transition: color 0.3s ease, text-decoration-color 0.3s ease, background-color 0.3s ease;
+}
+
+.sidebar nav ul li a.current,
+.sidebar nav ul li a:hover {
+    color: #E1BE42;
+    background-color: #FDE9A2; 
+    -webkit-text-stroke: 1px #000;
+}
+
+.sidebar ul.reports {
+    margin-top: auto;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    justify-content: flex-start; 
+}
+
+.sidebar ul.reports {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    justify-content: flex-start; 
+} 
+
+.sidebar ul.reports li {
+    margin: 25px 0;
+    width: 100%; 
+}
+
+.sidebar ul.reports li img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    align-items: start;
+}
+
+.sidebar ul.reports li a {
+    text-decoration: none;
+    color: #000000;
+    font-weight: 800;
+    font-size: medium;
+    display: flex;
+    align-items: center; 
+    gap: 10px; 
+    width: 100%; 
+    padding: 13px 20px; 
+    box-sizing: border-box; 
+    transition: color 0.3s ease, text-decoration-color 0.3s ease, background-color 0.3s ease;
+}
+
+.sidebar ul.reports li a.current,
+.sidebar ul.reports li a:hover {
+    color: #E1BE42;
+    background-color: #FDE9A2; 
+    -webkit-text-stroke: 1px #000;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin: 70px 10px auto 230px;
+}
+
+img.notification-icon {
+    margin-right: 10px;
+}
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f0f0f0;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+    border-radius: 10px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    border-radius: 10px;
+}
+
+.dropdown img {
+    cursor: pointer;
+}
+
+
+div#notificationDropdown {
+    width: 250px;
+}
+
+p.notif {
+    padding: 0 15px 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.card {
+    position: fixed;
+    top: 80px;
+    left: calc(20px + 200px + 20px); 
+    width: calc(100% - (60px + 200px + 35px));
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    height: calc(100% - 130px);
+    text-align: left;
+    flex: 1; 
+    overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1; 
+    z-index: 10; 
+}
+
+.card h2 {
+    margin-bottom: 5px;
+    font-size: 25px;
+    font-weight: 900;
+    color: #dbb73f;
+}
+
+.card h3 {
+    margin-top: 10px;
+    margin-bottom: 18px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #313131;
+    display: grid;
+    justify-content: center;
+}
+
+.order-header, 
+.order-item {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1.5fr 1.5fr 1.5fr 1fr;
+    gap: 8px;
+    margin-bottom: 7px;
+    border-radius: 10px;
+}
+
+.order-header {
+    border-bottom: 2px solid #ddd;
+    font-weight: bold;
+    font-size: 13px;
+    margin-top: -8px;
+    background: #f6d97f;
+    padding: 2px 15px 2px 10px;
+}
+
+.order-section {
+    margin-bottom: 30px;
+}
+
+.sort-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    margin-top: -10px;
+    margin-bottom: 20px;
+}
+
+.sort-container h3 {
+    margin: 0;
+}
+
+.sort {
+    display: flex;
+    align-items: center;
+}
+
+.sort label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.sort select {
+    padding: 5px;
+    font-size: 16px;
+}
+
+p.no-orders {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.order-item {
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.order-item-container {
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+.order-item-container:first-child {
+    border-top: none;
+}
+
+
+.order-item > div {
+    flex: 1;
+    padding: 5px;
+    text-align: center;
+}
+
+.order-item form {
+    display: flex;
+    align-items: center;
+}
+
+.order-item select {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    margin-right: 10px;
+}
+
+.order-header div, .order-item div {
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.order-details {
+    grid-column: 1 / -1; 
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    display: none;
+}
+
+.order-details-header {
+    padding: 10px;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.order-details-header h4 {
+    margin: 0;
+    font-size: 18px;
+    text-align: center;
+    color: #333;
+}
+
+.order-details ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.order-details ul li {
+    padding: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-details .item-brand,
+.order-details .item-name,
+.order-details .item-quantity,
+.order-details .item-price {
+    flex: 1;
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.order-details .item-name {
+    flex: 2;
+    text-align: left;
+}
+
+.details-toggle {
+    background: none;
+    border: none;
+    color: #dbb73f;
+    cursor: pointer;
+}
+
+.details-toggle .arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.details-toggle .arrow.rotated {
+    transform: rotate(180deg); 
+}
+
+
+@media (min-width: 1001px) and (max-width: 1130px) {
+    .card {        
+        width: fit-content;
+        margin-right: 10px;
+    }
+
+    .cart-item {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cart-summary {
+        width: calc(70% - 525px);
+    }
+}
+
+@media (min-width: 830px) and (max-width: 1000px) {
+
+    .card {        
+        padding: 10px;
+        width: fit-content;
+        height: 85vh;
+        max-height: 85vh;
+        margin: 0px 10px auto 0px;
+        /* box-sizing: border-box; */
+    }
+    
+    .card h3 {
+        font-size: larger;
+    }
+
+    .sort {
+        margin-top: 15px;
+        flex-direction: column;
+    }
+
+    .order-item select {
+        font-size: 10px;
+        padding: 4px;
+        width: 100px;
+        margin-right: -5px;
+    }
+
+    .order-details {
+        padding: 5px;
+    }
+    
+    .order-details-header h4 {
+        margin: 0;
+        font-size: 15px;
+    }
+    
+    .order-header div, .order-item div {
+        padding: 6px;
+        text-align: center;
+        font-size: 12px;
+    }
+
+    .order-header, .order-item {
+        padding: 5px;
+    }    
+
+    .details-toggle {
+        font-size: 12px;
+    }    
+
+}
+
+
+@media (min-width: 650px) and (max-width: 829px) {
+    header .logo {
+        height: 40px;
+        margin-left: 10px;
+    }
+
+    header nav a {
+        margin: 0 5px;
+        font-size: xx-small;
+        text-align: center;
+    }
+
+    header .account-info .user-name {
+        font-size: 12px;
+        margin-right: 5px;
+    }
+
+    header .account-info img {
+        margin-right: 10px;
+    }
+
+    header .account-info {
+        display: flex;
+        align-items: center;
+        margin-right: 15px;
+    }
+
+    .sidebar {
+        top: 75px;
+        left: 10px;
+        width: 100px;
+        /* height: 88%; */
+    }
+
+    .sidebar nav ul li a {
+        font-size: xx-small;
+        gap: 5px;
+        padding: 13px 5px;
+        justify-content: center;
+    }
+
+    .sidebar nav ul li img {
+        width: 20px;
+        height: 20px;
+        margin-right: 2px;
+    }
+
+    .sidebar ul.reports li a {
+        font-size: xx-small;
+        gap: 5px;
+        padding: 13px 5px;
+        justify-content: center;
+    }
+
+    .sidebar ul.reports li img {
+        width: 20px;
+        height: 20px;
+        margin-right: 2px;
+    }
+
+    .card {        
+        left: calc(120px);
+        padding: 10px;
+        width: fit-content;
+        height: 85vh;
+        max-height: 85vh;
+        margin: 0px 10px auto 0px;
+        /* box-sizing: border-box; */
+    }
+    
+    .card h3 {
+        font-size: larger;
+    }
+
+    .sort {
+        margin-top: 15px;
+        flex-direction: column;
+    }
+
+    .order-item select {
+        font-size: 10px;
+        padding: 4px;
+        width: 100px;
+        margin-right: -5px;
+    }
+
+    .order-details {
+        padding: 5px;
+    }
+    
+    .order-details-header h4 {
+        margin: 0;
+        font-size: 15px;
+    }
+    
+    .order-header div, .order-item div {
+        padding: 6px;
+        text-align: center;
+        font-size: 12px;
+    }
+
+    .order-header, .order-item {
+        padding: 5px;
+    }    
+
+    .details-toggle {
+        font-size: 12px;
+    }    
+}
+
+@media (max-width: 649px) {
+    header .logo {
+        height: 40px;
+        margin-left: 10px;
+    }
+        
+    header nav a {
+        margin: 0 5px;
+        font-size: xx-small;
+        text-align: center;
+    }
+
+    header .account-info .user-name {
+        font-size: 12px;
+        margin-right: 5px;
+    }
+
+    header .account-info img {
+        margin-right: 10px;
+    }
+
+    header .account-info {
+        display: flex;
+        align-items: center;
+        margin-right: 15px;
+    }
+
+    .sidebar {
+        top: 75px;
+        left: 10px;
+        width: 100px;
+    }
+
+    .sidebar nav ul li a {
+        font-size: xx-small;
+        gap: 5px;
+        padding: 13px 5px;
+    }
+
+    .sidebar nav ul li img {
+        width: 20px;
+        height: 20px;
+        margin-right: 2px;
+    }
+
+    main {
+        margin: 45px -10px auto 100px;
+        padding: 0;
+    }
+    
+    .card{
+        padding: 10px;
+        width: fit-content;
+        height: 84vh;
+        max-height: 84vh;
+        margin: -5px 10px auto 0px;
+        left: calc(120px);
+    }
+    
+    .card h2 {
+        margin-bottom: 5px;
+        font-size: 20px;
+    }
+
+    .card h3 {
+        margin-top: -15px;
+        margin-bottom: 15px;
+        font-size: 18px;
+    }
+    
+    .sort {
+        margin-top: 15px;
+        flex-direction: column;
+    }
+        
+    .sort select {
+        padding: 3px;
+        font-size: 12px;
+    }    
+    
+    .order-item {
+        grid-template-columns: repeat(4, 1fr) auto;
+    }
+    
+    .order-item select {
+        font-size: 10px;
+        padding: 4px;
+        width: 100px;
+        margin-right: -5px;
+    }
+
+    .order-details {
+        padding: 5px;
+    }
+    
+    .order-details-header h4 {
+        margin: 0;
+        font-size: 15px;
+    }
+    
+    .order-header div, .order-item div {
+        padding: 6px;
+        text-align: center;
+        font-size: 10px;
+    }
+
+    .order-header, .order-item {
+        grid-template-columns: 1fr 1.5fr 1.5fr 1.5fr 2fr;
+        padding: 2px;
+    }    
+
+    .details-toggle {
+        font-size: 12px;
+    }    
+}
+
+
+@media (max-width: 520px) {
+    .card {
+        width: fit-content;
+        margin-right: 10px;
+        padding: 8px;
+        height: 86vh;
+        max-height: 86vh;
+    }
+
+    .order-item select {
+        width: 75px;
+    }
+}
