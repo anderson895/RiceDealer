@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: sql311.infinityfree.com
--- Generation Time: Nov 19, 2024 at 10:15 AM
--- Server version: 10.6.19-MariaDB
--- PHP Version: 7.2.22
+-- Host: 127.0.0.1
+-- Generation Time: Nov 22, 2024 at 01:04 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `if0_37718710_system_db`
+-- Database: `system_db`
 --
 
 -- --------------------------------------------------------
@@ -87,10 +86,10 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`cart_id`, `login_id`, `prod_id`, `quantity`, `created_at`, `user_type`, `price_type`, `price`) VALUES
-(72, 3, 2, 5, '2024-09-19 11:55:13', 'customer', 'wholesale', '0.00'),
-(83, 3, 3, 4, '2024-09-30 02:41:59', 'customer', 'wholesale', '0.00'),
-(86, 3, 6, 1, '2024-09-30 03:19:58', '', 'wholesale', '1110.00'),
-(93, 11, 1, 9, '2024-10-06 11:19:19', '', 'wholesale', '1240.00');
+(72, 3, 2, 5, '2024-09-19 11:55:13', 'customer', 'wholesale', 0.00),
+(83, 3, 3, 4, '2024-09-30 02:41:59', 'customer', 'wholesale', 0.00),
+(86, 3, 6, 1, '2024-09-30 03:19:58', '', 'wholesale', 1110.00),
+(93, 11, 1, 9, '2024-10-06 11:19:19', '', 'wholesale', 1240.00);
 
 -- --------------------------------------------------------
 
@@ -109,40 +108,40 @@ CREATE TABLE `delivery_fees` (
 --
 
 INSERT INTO `delivery_fees` (`id`, `city`, `fee`) VALUES
-(1, 'Batangas City', '100.00'),
-(2, 'San Jose', '120.00'),
-(3, 'San Pascual', '120.00'),
-(4, 'Ibaan', '150.00'),
-(5, 'Taysan', '150.00'),
-(6, 'Lobo', '150.00'),
-(7, 'Balete', '150.00'),
-(8, 'Mabini', '150.00'),
-(9, 'Bauan', '150.00'),
-(10, 'San Luis', '150.00'),
-(11, 'Alitagtag', '150.00'),
-(12, 'Cuenca', '150.00'),
-(13, 'Lipa', '180.00'),
-(14, 'Rosario', '180.00'),
-(15, 'Padre Garcia', '180.00'),
-(16, 'Taal', '180.00'),
-(17, 'San Nicolas', '180.00'),
-(18, 'Batangas', '120.00'),
-(19, 'San Jose', '150.00'),
-(20, 'San Pascual', '150.00'),
-(21, 'Ibaan', '150.00'),
-(22, 'Taysan', '150.00'),
-(23, 'Lobo', '150.00'),
-(24, 'San Pascual', '150.00'),
-(25, 'Mabini', '150.00'),
-(26, 'Bauan', '150.00'),
-(27, 'San Luis', '150.00'),
-(28, 'Alitagtag', '150.00'),
-(29, 'Cuenca', '150.00'),
-(30, 'Lipa', '180.00'),
-(31, 'Rosario', '180.00'),
-(32, 'Padre Garcia', '180.00'),
-(33, 'Taal', '180.00'),
-(34, 'San Nicolas', '180.00');
+(1, 'Batangas City', 100.00),
+(2, 'San Jose', 120.00),
+(3, 'San Pascual', 120.00),
+(4, 'Ibaan', 150.00),
+(5, 'Taysan', 150.00),
+(6, 'Lobo', 150.00),
+(7, 'Balete', 150.00),
+(8, 'Mabini', 150.00),
+(9, 'Bauan', 150.00),
+(10, 'San Luis', 150.00),
+(11, 'Alitagtag', 150.00),
+(12, 'Cuenca', 150.00),
+(13, 'Lipa', 180.00),
+(14, 'Rosario', 180.00),
+(15, 'Padre Garcia', 180.00),
+(16, 'Taal', 180.00),
+(17, 'San Nicolas', 180.00),
+(18, 'Batangas', 120.00),
+(19, 'San Jose', 150.00),
+(20, 'San Pascual', 150.00),
+(21, 'Ibaan', 150.00),
+(22, 'Taysan', 150.00),
+(23, 'Lobo', 150.00),
+(24, 'San Pascual', 150.00),
+(25, 'Mabini', 150.00),
+(26, 'Bauan', 150.00),
+(27, 'San Luis', 150.00),
+(28, 'Alitagtag', 150.00),
+(29, 'Cuenca', 150.00),
+(30, 'Lipa', 180.00),
+(31, 'Rosario', 180.00),
+(32, 'Padre Garcia', 180.00),
+(33, 'Taal', 180.00),
+(34, 'San Nicolas', 180.00);
 
 -- --------------------------------------------------------
 
@@ -195,85 +194,85 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_id`, `login_id`, `order_date`, `total_amount`, `order_source`, `order_type`, `order_status`, `status_processed_at`, `status_packed_at`, `status_shipped_at`, `status_delivered_at`) VALUES
-(1, 3, '2024-08-26 15:33:46', '11230.00', 'in-store', 'wholesale', 'Delivery Complete', NULL, '2024-09-07 06:17:36', '2024-09-07 06:35:47', '2024-09-07 11:27:19'),
-(2, 3, '2024-08-26 15:54:14', '11230.00', 'online', 'wholesale', 'Delivery Complete', NULL, '2024-09-07 06:17:36', '2024-09-07 06:35:28', '2024-09-07 17:17:16'),
-(3, 3, '2024-08-26 16:37:31', '11230.00', 'online', 'wholesale', 'Pending', NULL, '2024-09-07 06:17:36', NULL, NULL),
-(5, 3, '2024-08-26 16:39:19', '11230.00', 'online', 'wholesale', 'Pending', NULL, '2024-09-07 06:35:28', '2024-09-07 06:35:28', '2024-09-07 17:59:36'),
-(6, 3, '2024-08-26 17:05:45', '11230.00', 'online', 'wholesale', 'Delivery Complete', NULL, '2024-09-07 06:17:36', NULL, NULL),
-(7, 3, '2024-08-26 17:19:46', '11230.00', 'online', 'wholesale', 'For Delivery', NULL, '2024-09-07 06:17:36', '2024-09-07 06:19:47', '2024-09-07 14:05:11'),
-(8, 3, '2024-08-27 09:01:13', '11230.00', 'online', 'wholesale', 'For Delivery', NULL, '2024-09-07 06:17:36', '2024-09-07 06:17:36', '2024-09-07 14:30:42'),
-(9, 3, '2024-08-27 09:31:27', '11450.00', 'online', 'wholesale', 'Being Packed', NULL, '2024-09-07 06:17:36', NULL, NULL),
-(10, 3, '2024-08-27 18:43:33', '16292.00', 'online', 'wholesale', 'For Delivery', NULL, NULL, NULL, NULL),
-(11, 3, '2024-08-27 18:45:26', '11650.00', 'online', 'wholesale', 'Being Packed', NULL, NULL, NULL, NULL),
-(12, 3, '2024-08-27 18:46:04', '11650.00', 'online', 'wholesale', 'Being Packed', NULL, NULL, NULL, NULL),
-(13, 3, '2024-08-27 18:47:07', '11550.00', 'online', 'wholesale', 'For Delivery', NULL, '2024-09-07 06:17:36', '2024-09-07 06:17:36', '2024-09-07 17:50:41'),
-(14, 3, '2024-08-27 19:11:23', '15100.00', 'online', 'wholesale', 'For Delivery', NULL, NULL, NULL, NULL),
-(18, 3, '2024-08-29 21:50:30', '13172.00', 'online', 'wholesale', 'For Delivery', NULL, '2024-09-07 06:17:06', '2024-09-07 11:49:30', NULL),
-(19, 3, '2024-08-29 22:05:39', '10650.00', 'online', 'wholesale', 'Cancelled', NULL, NULL, NULL, NULL),
-(20, 3, '2024-08-29 22:06:51', '10650.00', 'online', 'wholesale', 'Cancelled', NULL, NULL, NULL, NULL),
-(22, 3, '2024-09-13 10:43:31', '11450.00', 'in-store', 'wholesale', 'Pending', NULL, '2024-09-30 04:08:24', '2024-09-30 04:08:27', NULL),
-(40, 11, '2024-10-02 23:18:59', '11450.00', 'online', 'wholesale', 'Pending', NULL, NULL, NULL, NULL),
-(42, 2, '2024-10-06 22:20:49', '14880.00', 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
-(43, 2, '2024-10-07 14:25:59', '9040.00', 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
-(44, 2, '2024-10-08 14:26:30', '5550.00', 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
-(45, 2, '2024-10-09 22:35:13', '2400.00', 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
-(46, 2, '2024-10-09 22:36:00', '10350.00', 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
-(47, 2, '2024-10-11 22:36:02', '10350.00', 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
-(48, 2, '2024-10-09 00:00:00', '102.00', 'in-store', 'retail', 'Paid', NULL, NULL, NULL, NULL),
-(49, 2, '2024-10-10 00:21:50', '300.00', 'in-store', 'retail', 'Paid', NULL, NULL, NULL, NULL),
-(50, 2, '2024-10-11 00:37:28', '300.00', 'in-store', 'retail', 'Paid', NULL, NULL, NULL, NULL),
-(51, 2, '2024-10-15 21:00:55', '300.00', 'in-store', 'retail', 'Paid', NULL, NULL, NULL, NULL),
-(52, 2, '2024-10-15 21:02:27', '203.00', 'in-store', 'retail', 'Paid', NULL, NULL, NULL, NULL),
-(53, 2, '2024-10-17 21:18:26', '4440.00', 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
-(54, 2, '2024-10-17 21:19:15', '315.00', 'in-store', 'retail', 'Paid', NULL, NULL, NULL, NULL),
-(55, 2, '2024-10-17 23:15:50', '1200.00', 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
-(56, 2, '2024-10-17 23:22:17', '1240.00', 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
-(57, 2, '2024-10-17 23:45:58', '1050.00', 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
-(58, 2, '2024-10-17 23:49:06', '1240.00', 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
-(59, 2, '2024-10-18 00:00:57', '1130.00', 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
-(60, 2, '2024-10-18 00:07:43', '1200.00', 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
-(61, 2, '2024-10-18 21:42:00', '2480.00', 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
-(62, 2, '2024-10-18 22:00:58', '1130.00', 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
-(63, 2, '2024-10-18 22:02:26', '180.00', 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
-(64, 2, '2024-10-18 22:08:33', '1130.00', 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
-(65, 2, '2024-10-18 22:17:40', '56.00', 'in-store', 'retail', 'Paid', NULL, NULL, NULL, NULL),
-(66, 2, '2024-10-18 22:18:52', '1050.00', 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
-(67, 2, '2024-10-18 22:30:45', '1240.00', 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
-(68, 2, '2024-10-21 21:43:11', '1240.00', 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
-(69, 2, '2024-10-23 00:00:00', '1240.00', 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
-(70, 2, '2024-10-24 22:30:47', '1240.00', 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
-(71, 18, '2024-11-02 07:23:06', '12500.00', 'online', 'wholesale', 'Delivery Complete', NULL, '2024-11-18 10:54:54', '2024-11-18 10:55:00', '2024-11-18 10:55:05'),
-(72, 13, '2024-11-02 21:06:49', '11620.00', 'online', 'wholesale', 'Being Packed', NULL, '2024-11-19 00:32:44', NULL, NULL),
-(73, 16, '2024-11-03 21:38:49', '120.00', 'in-store', 'retail', 'Paid', NULL, NULL, NULL, NULL),
-(75, 16, '2024-11-04 22:04:41', '74.00', 'in-store', 'retail', 'Paid', NULL, NULL, NULL, NULL),
-(77, 16, '2024-11-04 22:07:30', '1150.00', 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
-(80, 16, '2024-11-04 22:12:31', '1050.00', 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
-(81, 16, '2024-11-06 22:30:34', '40.00', 'in-store', 'retail', 'Paid', NULL, NULL, NULL, NULL),
-(83, 16, '2024-11-07 23:13:37', '56.00', 'in-store', 'retail', 'Paid', NULL, NULL, NULL, NULL),
-(87, 16, '2024-11-07 23:20:27', '1250.00', 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
-(91, 16, '2024-11-08 23:26:33', '1130.00', 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
-(92, 16, '2024-11-09 23:33:05', '1250.00', 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
-(93, 16, '2024-11-09 23:34:23', '34.00', 'in-store', 'retail', 'Paid', NULL, NULL, NULL, NULL),
-(94, 16, '2024-11-10 23:34:51', '1050.00', 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
-(95, 16, '2024-11-10 00:00:00', '112.00', 'in-store', 'retail', 'Paid', NULL, NULL, NULL, NULL),
-(96, 16, '2024-11-10 23:39:51', '1250.00', 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
-(97, 16, '2024-11-11 23:40:13', '34.00', 'in-store', 'retail', 'Paid', NULL, NULL, NULL, NULL),
-(98, 16, '2024-11-11 00:00:00', '102.00', 'in-store', 'retail', 'Paid', NULL, NULL, NULL, NULL),
-(99, 16, '2024-11-12 23:53:20', '1150.00', 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
-(100, 16, '2024-11-12 23:59:49', '1250.00', 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
-(101, 16, '2024-11-13 00:04:54', '1110.00', 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
-(102, 16, '2024-11-14 00:25:50', '1150.00', 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
-(103, 16, '2024-11-15 00:32:53', '1250.00', 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
-(104, 16, '2024-11-15 00:33:45', '56.00', 'in-store', 'retail', 'Paid', NULL, NULL, NULL, NULL),
-(105, 16, '2024-11-16 01:02:05', '56.00', 'in-store', 'retail', 'Paid', NULL, NULL, NULL, NULL),
-(106, 16, '2024-11-16 01:05:28', '120.00', 'in-store', 'retail', 'Paid', NULL, NULL, NULL, NULL),
-(107, 16, '2024-11-17 03:27:01', '1150.00', 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
-(108, 16, '2024-11-17 03:29:42', '120.00', 'in-store', 'retail', 'Paid', '2024-11-19 03:29:42', NULL, NULL, NULL),
-(109, 16, '2024-11-17 03:41:23', '34.00', 'in-store', 'retail', 'Paid', '2024-11-19 03:41:23', NULL, NULL, NULL),
-(110, 16, '2024-11-18 03:44:14', '56.00', 'in-store', 'retail', 'Paid', '2024-11-19 03:44:14', NULL, NULL, NULL),
-(111, 16, '2024-11-18 03:49:16', '34.00', 'in-store', 'retail', 'Paid', '2024-11-19 03:49:16', NULL, NULL, NULL),
-(112, 16, '2024-11-19 03:49:28', '34.00', 'in-store', 'retail', 'Paid', '2024-11-19 03:49:28', NULL, NULL, NULL),
-(113, 16, '2024-11-19 20:03:03', '55.00', 'in-store', 'retail', 'Paid', '2024-11-19 20:03:03', NULL, NULL, NULL);
+(1, 3, '2024-08-26 15:33:46', 11230.00, 'in-store', 'wholesale', 'Delivery Complete', NULL, '2024-09-07 06:17:36', '2024-09-07 06:35:47', '2024-09-07 11:27:19'),
+(2, 3, '2024-08-26 15:54:14', 11230.00, 'online', 'wholesale', 'Delivery Complete', NULL, '2024-09-07 06:17:36', '2024-09-07 06:35:28', '2024-09-07 17:17:16'),
+(3, 3, '2024-08-26 16:37:31', 11230.00, 'online', 'wholesale', 'Pending', NULL, '2024-09-07 06:17:36', NULL, NULL),
+(5, 3, '2024-08-26 16:39:19', 11230.00, 'online', 'wholesale', 'Pending', NULL, '2024-09-07 06:35:28', '2024-09-07 06:35:28', '2024-09-07 17:59:36'),
+(6, 3, '2024-08-26 17:05:45', 11230.00, 'online', 'wholesale', 'Delivery Complete', NULL, '2024-09-07 06:17:36', NULL, NULL),
+(7, 3, '2024-08-26 17:19:46', 11230.00, 'online', 'wholesale', 'For Delivery', NULL, '2024-09-07 06:17:36', '2024-09-07 06:19:47', '2024-09-07 14:05:11'),
+(8, 3, '2024-08-27 09:01:13', 11230.00, 'online', 'wholesale', 'For Delivery', NULL, '2024-09-07 06:17:36', '2024-09-07 06:17:36', '2024-09-07 14:30:42'),
+(9, 3, '2024-08-27 09:31:27', 11450.00, 'online', 'wholesale', 'Being Packed', NULL, '2024-09-07 06:17:36', NULL, NULL),
+(10, 3, '2024-08-27 18:43:33', 16292.00, 'online', 'wholesale', 'For Delivery', NULL, NULL, NULL, NULL),
+(11, 3, '2024-08-27 18:45:26', 11650.00, 'online', 'wholesale', 'Being Packed', NULL, NULL, NULL, NULL),
+(12, 3, '2024-08-27 18:46:04', 11650.00, 'online', 'wholesale', 'Being Packed', NULL, NULL, NULL, NULL),
+(13, 3, '2024-08-27 18:47:07', 11550.00, 'online', 'wholesale', 'For Delivery', NULL, '2024-09-07 06:17:36', '2024-09-07 06:17:36', '2024-09-07 17:50:41'),
+(14, 3, '2024-08-27 19:11:23', 15100.00, 'online', 'wholesale', 'For Delivery', NULL, NULL, NULL, NULL),
+(18, 3, '2024-08-29 21:50:30', 13172.00, 'online', 'wholesale', 'For Delivery', NULL, '2024-09-07 06:17:06', '2024-09-07 11:49:30', NULL),
+(19, 3, '2024-08-29 22:05:39', 10650.00, 'online', 'wholesale', 'Cancelled', NULL, NULL, NULL, NULL),
+(20, 3, '2024-08-29 22:06:51', 10650.00, 'online', 'wholesale', 'Cancelled', NULL, NULL, NULL, NULL),
+(22, 3, '2024-09-13 10:43:31', 11450.00, 'in-store', 'wholesale', 'Pending', NULL, '2024-09-30 04:08:24', '2024-09-30 04:08:27', NULL),
+(40, 11, '2024-10-02 23:18:59', 11450.00, 'online', 'wholesale', 'Pending', NULL, NULL, NULL, NULL),
+(42, 2, '2024-10-06 22:20:49', 14880.00, 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
+(43, 2, '2024-10-07 14:25:59', 9040.00, 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
+(44, 2, '2024-10-08 14:26:30', 5550.00, 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
+(45, 2, '2024-10-09 22:35:13', 2400.00, 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
+(46, 2, '2024-10-09 22:36:00', 10350.00, 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
+(47, 2, '2024-10-11 22:36:02', 10350.00, 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
+(48, 2, '2024-10-09 00:00:00', 102.00, 'in-store', 'retail', 'Paid', NULL, NULL, NULL, NULL),
+(49, 2, '2024-10-10 00:21:50', 300.00, 'in-store', 'retail', 'Paid', NULL, NULL, NULL, NULL),
+(50, 2, '2024-10-11 00:37:28', 300.00, 'in-store', 'retail', 'Paid', NULL, NULL, NULL, NULL),
+(51, 2, '2024-10-15 21:00:55', 300.00, 'in-store', 'retail', 'Paid', NULL, NULL, NULL, NULL),
+(52, 2, '2024-10-15 21:02:27', 203.00, 'in-store', 'retail', 'Paid', NULL, NULL, NULL, NULL),
+(53, 2, '2024-10-17 21:18:26', 4440.00, 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
+(54, 2, '2024-10-17 21:19:15', 315.00, 'in-store', 'retail', 'Paid', NULL, NULL, NULL, NULL),
+(55, 2, '2024-10-17 23:15:50', 1200.00, 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
+(56, 2, '2024-10-17 23:22:17', 1240.00, 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
+(57, 2, '2024-10-17 23:45:58', 1050.00, 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
+(58, 2, '2024-10-17 23:49:06', 1240.00, 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
+(59, 2, '2024-10-18 00:00:57', 1130.00, 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
+(60, 2, '2024-10-18 00:07:43', 1200.00, 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
+(61, 2, '2024-10-18 21:42:00', 2480.00, 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
+(62, 2, '2024-10-18 22:00:58', 1130.00, 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
+(63, 2, '2024-10-18 22:02:26', 180.00, 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
+(64, 2, '2024-10-18 22:08:33', 1130.00, 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
+(65, 2, '2024-10-18 22:17:40', 56.00, 'in-store', 'retail', 'Paid', NULL, NULL, NULL, NULL),
+(66, 2, '2024-10-18 22:18:52', 1050.00, 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
+(67, 2, '2024-10-18 22:30:45', 1240.00, 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
+(68, 2, '2024-10-21 21:43:11', 1240.00, 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
+(69, 2, '2024-10-23 00:00:00', 1240.00, 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
+(70, 2, '2024-10-24 22:30:47', 1240.00, 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
+(71, 18, '2024-11-02 07:23:06', 12500.00, 'online', 'wholesale', 'Delivery Complete', NULL, '2024-11-18 10:54:54', '2024-11-18 10:55:00', '2024-11-18 10:55:05'),
+(72, 13, '2024-11-02 21:06:49', 11620.00, 'online', 'wholesale', 'Being Packed', NULL, '2024-11-19 00:32:44', NULL, NULL),
+(73, 16, '2024-11-03 21:38:49', 120.00, 'in-store', 'retail', 'Paid', NULL, NULL, NULL, NULL),
+(75, 16, '2024-11-04 22:04:41', 74.00, 'in-store', 'retail', 'Paid', NULL, NULL, NULL, NULL),
+(77, 16, '2024-11-04 22:07:30', 1150.00, 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
+(80, 16, '2024-11-04 22:12:31', 1050.00, 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
+(81, 16, '2024-11-06 22:30:34', 40.00, 'in-store', 'retail', 'Paid', NULL, NULL, NULL, NULL),
+(83, 16, '2024-11-07 23:13:37', 56.00, 'in-store', 'retail', 'Paid', NULL, NULL, NULL, NULL),
+(87, 16, '2024-11-07 23:20:27', 1250.00, 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
+(91, 16, '2024-11-08 23:26:33', 1130.00, 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
+(92, 16, '2024-11-09 23:33:05', 1250.00, 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
+(93, 16, '2024-11-09 23:34:23', 34.00, 'in-store', 'retail', 'Paid', NULL, NULL, NULL, NULL),
+(94, 16, '2024-11-10 23:34:51', 1050.00, 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
+(95, 16, '2024-11-10 00:00:00', 112.00, 'in-store', 'retail', 'Paid', NULL, NULL, NULL, NULL),
+(96, 16, '2024-11-10 23:39:51', 1250.00, 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
+(97, 16, '2024-11-11 23:40:13', 34.00, 'in-store', 'retail', 'Paid', NULL, NULL, NULL, NULL),
+(98, 16, '2024-11-11 00:00:00', 102.00, 'in-store', 'retail', 'Paid', NULL, NULL, NULL, NULL),
+(99, 16, '2024-11-12 23:53:20', 1150.00, 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
+(100, 16, '2024-11-12 23:59:49', 1250.00, 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
+(101, 16, '2024-11-13 00:04:54', 1110.00, 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
+(102, 16, '2024-11-14 00:25:50', 1150.00, 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
+(103, 16, '2024-11-15 00:32:53', 1250.00, 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
+(104, 16, '2024-11-15 00:33:45', 56.00, 'in-store', 'retail', 'Paid', NULL, NULL, NULL, NULL),
+(105, 16, '2024-11-16 01:02:05', 56.00, 'in-store', 'retail', 'Paid', NULL, NULL, NULL, NULL),
+(106, 16, '2024-11-16 01:05:28', 120.00, 'in-store', 'retail', 'Paid', NULL, NULL, NULL, NULL),
+(107, 16, '2024-11-17 03:27:01', 1150.00, 'in-store', 'wholesale', 'Paid', NULL, NULL, NULL, NULL),
+(108, 16, '2024-11-17 03:29:42', 120.00, 'in-store', 'retail', 'Paid', '2024-11-19 03:29:42', NULL, NULL, NULL),
+(109, 16, '2024-11-17 03:41:23', 34.00, 'in-store', 'retail', 'Paid', '2024-11-19 03:41:23', NULL, NULL, NULL),
+(110, 16, '2024-11-18 03:44:14', 56.00, 'in-store', 'retail', 'Paid', '2024-11-19 03:44:14', NULL, NULL, NULL),
+(111, 16, '2024-11-18 03:49:16', 34.00, 'in-store', 'retail', 'Paid', '2024-11-19 03:49:16', NULL, NULL, NULL),
+(112, 16, '2024-11-19 03:49:28', 34.00, 'in-store', 'retail', 'Paid', '2024-11-19 03:49:28', NULL, NULL, NULL),
+(113, 16, '2024-11-19 20:03:03', 55.00, 'in-store', 'retail', 'Paid', '2024-11-19 20:03:03', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -411,11 +410,11 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`prod_id`, `prod_brand`, `prod_name`, `prod_price_wholesale`, `prod_price_retail`, `prod_image_path`, `prod_created_at`) VALUES
-(1, 'A. M. Delen', 'Malagkit Mindoro', '1250.00', '34.00', '../../images/sacks/f_b_jasmine.png', '2024-08-15 10:32:17'),
-(2, 'Farmers Best', 'C-4 Dinorado', '1130.00', '56.00', '../../images/sacks/f_b_c4_dinorado.png', '2024-08-15 10:32:17'),
-(3, 'Farmers Best', 'Dinorado', '1150.00', '40.00', '../../images/sacks/f_b_dinorado.png', '2024-08-15 10:32:17'),
-(5, 'N. H. Escalona', 'Malagkit Mindoro', '1050.00', '60.00', '../../images/sacks/n_h_malagkit.png', '2024-08-15 10:32:19'),
-(6, 'Farmers Best', 'Maharlika', '1110.00', '55.00', '../../images/sacks/f_b_maharlika.png', '2024-08-16 09:02:48');
+(1, 'A. M. Delen', 'Malagkit Mindoro', 1250.00, 34.00, '../../images/sacks/f_b_jasmine.png', '2024-08-15 10:32:17'),
+(2, 'Farmers Best', 'C-4 Dinorado', 1130.00, 56.00, '../../images/sacks/f_b_c4_dinorado.png', '2024-08-15 10:32:17'),
+(3, 'Farmers Best', 'Dinorado', 1150.00, 40.00, '../../images/sacks/f_b_dinorado.png', '2024-08-15 10:32:17'),
+(5, 'N. H. Escalona', 'Malagkit Mindoro', 1050.00, 60.00, '../../images/sacks/n_h_malagkit.png', '2024-08-15 10:32:19'),
+(6, 'Farmers Best', 'Maharlika', 1110.00, 55.00, '../../images/sacks/f_b_maharlika.png', '2024-08-16 09:02:48');
 
 -- --------------------------------------------------------
 
@@ -488,11 +487,23 @@ CREATE TABLE `stocks` (
 --
 
 INSERT INTO `stocks` (`stock_id`, `prod_id`, `stock_quantity`, `last_updated`, `branch_id`) VALUES
-(1, 1, 31, '2024-11-19 12:02:43', 1),
-(2, 2, 4, '2024-11-19 12:02:51', 2),
-(6, 3, 14, '2024-11-19 11:27:01', 2),
-(10, 5, 16, '2024-11-19 11:29:42', 3),
-(13, 6, 27, '2024-11-19 12:03:03', 1);
+(79, 6, 50, '2024-11-20 13:52:58', 2),
+(80, 2, 50, '2024-11-20 13:52:58', 2),
+(81, 1, 50, '2024-11-20 13:52:58', 2),
+(82, 6, 10, '2024-11-20 13:52:58', 2),
+(83, 5, 5, '2024-11-20 13:54:16', 3),
+(84, 2, 10, '2024-11-20 13:54:36', 3),
+(85, 3, 5, '2024-11-20 13:56:42', 1),
+(86, 6, 9, '2024-11-20 13:57:04', 1),
+(87, 2, 10, '2024-11-20 13:57:13', 1),
+(88, 3, 10, '2024-11-21 15:26:16', 1),
+(89, 3, 60, '2024-11-21 15:27:32', 2),
+(90, 3, 15, '2024-11-21 15:28:05', 3),
+(91, 5, 1, '2024-11-21 15:29:33', 3),
+(92, 6, 1, '2024-11-21 15:30:38', 3),
+(93, 6, 90, '2024-11-21 15:31:37', 3),
+(94, 1, 78, '2024-11-21 15:34:01', 1),
+(95, 1, 78, '2024-11-21 15:34:04', 1);
 
 --
 -- Indexes for dumped tables
@@ -572,7 +583,8 @@ ALTER TABLE `staff`
 --
 ALTER TABLE `stocks`
   ADD PRIMARY KEY (`stock_id`),
-  ADD UNIQUE KEY `prod_id` (`prod_id`);
+  ADD KEY `branch_id` (`branch_id`),
+  ADD KEY `prod_id` (`prod_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -618,7 +630,7 @@ ALTER TABLE `order_items`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `prod_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `prod_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `staff`
@@ -630,7 +642,7 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT for table `stocks`
 --
 ALTER TABLE `stocks`
-  MODIFY `stock_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `stock_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 
 --
 -- Constraints for dumped tables
@@ -661,6 +673,13 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `profile`
   ADD CONSTRAINT `profile_ibfk_1` FOREIGN KEY (`username`) REFERENCES `login` (`username`);
+
+--
+-- Constraints for table `stocks`
+--
+ALTER TABLE `stocks`
+  ADD CONSTRAINT `stocks_ibfk_1` FOREIGN KEY (`branch_id`) REFERENCES `branches` (`branch_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `stocks_ibfk_2` FOREIGN KEY (`prod_id`) REFERENCES `products` (`prod_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
